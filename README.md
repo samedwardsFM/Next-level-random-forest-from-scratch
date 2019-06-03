@@ -14,8 +14,8 @@ A classifier built with this library has the following features and capablities:
 - Compute out-of-bag error.
 - Save and load model
 ## Training sample
-A full model training and hyperparameter optimization code and runs can be found in `Training sample.ipynb`. Dataset used is fashion mnist with dimensionality reduced data and can be found in `.\input` folder.<br>
-The final model achieves **89.96%** test accuracy.
+A full model training code can be found in `final_run.py`. Dataset used is fashion mnist and can be found in `.\input` folder.<br>
+The final model achieves **86.05%** test accuracy.
 ## Sample code
 ```python
 # import deep learning class
