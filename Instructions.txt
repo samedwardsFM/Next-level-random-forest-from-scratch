@@ -1,0 +1,9 @@
+running instructions:
+
+pip install -r requirements.txt
+
+python final_run.py [-p | --parallel] [-o | --oobe]
+
+Where:
+-p | --parallel: uses 3/4 number of CPU cores to speed up the code
+-o | --oobe: produce out-of-bag error graph

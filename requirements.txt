@@ -1,0 +1,9 @@
+cycler==0.10.0
+h5py==2.8.0
+joblib==0.12.5
+kiwisolver==1.0.1
+matplotlib
+numpy
+pyparsing==2.2.1
+python-dateutil==2.7.3
+six==1.11.0
