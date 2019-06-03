@@ -18,37 +18,14 @@ A full model training code can be found in `final_run.py`. Dataset used is fashi
 The final model achieves **86.05%** test accuracy.
 ## Sample code
 ```python
-# import deep learning class
-from DeepLearning import NN, Layers, Utils, Losses, Optimizers, Regularizers, Metrics
+from Classifiers import RandomForestClassifier
+import numpy as np
+import Preprocessing as pre
+import h5py
 
-# read training (100 samples), validation and test data
-# .
-# .
-# .
-
-# define model hyperparameters
-clf = NN(Losses.softmax_cross_entropy,
-         Optimizers.RMSProp,
-         regularizer=Regularizers.l1,
-         reg_lambda=0.01)
-clf.add(Layers.Dense(128, input_dim=100))
-clf.add(Layers.Dense(96, activation='lrelu', batch_norm=(0.99, 0.001, 1e-5)))
-clf.add(Layers.Dense(64, activation='lrelu', batch_norm=(0.99, 0.001, 1e-5)))
-clf.add(Layers.Dense(10, activation='softmax'))
-
-# training network
-result = clf.fit(x_train,
-                 y_train,
-                 learning_rate=0.01,
-                 batch_size=128,
-                 epochs=epochs,
-                 print_freq=1,
-                 gamma=0.0,
-                 decay=0.9,
-                 validation=(x_val, y_val))
-                 
-loss, acc, val_loss, val_acc = result['Loss'], result['Accuracy'], result['Val Loss'], result['Val Accuracy']
-
-# make predictions
-y_pred = clf.predict(x_test)
+training_set, test_set = pre.load_data()
+X_train, Y_train, X_test, Y_test = pre.preprocess_all(training_set, test_set, -1)
+clf = RandomForestClassifier(n_trees=275, tree_depth=50, split_metric='entropy', n_jobs=1)
+for i, (x_t, y_t) in enumerate(zip(X_train, Y_train)):
+  clf.fit(x_t, y_t)
 ```
